@@ -1,41 +1,26 @@
 <?php
-/*Template Name: AppLab Post Template
+/*Template Name: App Release Post Template
 */
 
 get_header(); ?>
     <div id="primary">
         <div id="content" role="main">
             <?php
-            $apppost = array( 'post_type' => 'applab_posts', );
+            $apppost = array( 'post_type' => 'app_releases', );
             $loop = new WP_Query( $apppost );
             ?>
             <?php while ( $loop->have_posts() ) : $loop->the_post();?>
                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                     <header class="entry-header">
-
-                        <!-- Display featured image in right-aligned floating div -->
-                        <div style="float: right; margin: 10px">
-                            <?php the_post_thumbnail( array( 100, 100 ) ); ?>
-                        </div>
-
-                        <!-- Display Title and Author Name -->
-                        <strong>Title: </strong><?php the_title(); ?><br />
-                        <strong>Director: </strong>
-                        <?php echo esc_html( get_post_meta( get_the_ID(), 'movie_director', true ) ); ?>
+                        
+                        <!-- display app name and release notes  -->
+                        <strong>App Name: </strong>
+                        <?php echo esc_html( get_post_meta( get_the_ID(), 'app_name', true ) ); ?>
                         <br />
 
-                        <!-- Display yellow stars based on rating -->
-                        <strong>Rating: </strong>
-                        <?php
-                        $nb_stars = intval( get_post_meta( get_the_ID(), 'movie_rating', true ) );
-                        for ( $star_counter = 1; $star_counter <= 5; $star_counter++ ) {
-                            if ( $star_counter <= $nb_stars ) {
-                                echo '<img src="' . plugins_url( 'Movie-Reviews/images/icon.png' ) . '" />';
-                            } else {
-                                echo '<img src="' . plugins_url( 'Movie-Reviews/images/grey.png' ). '" />';
-                            }
-                        }
-                        ?>
+                        <strong>Release Notes: </strong>
+                        <?php echo esc_html( get_post_meta( get_the_ID(), 'release_notes', true ) ); ?>
+                        <br />
                     </header>
 
                     <!-- Display movie review contents -->
