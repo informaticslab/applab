@@ -12,7 +12,7 @@ get_header(); ?>
             <?php while ( $loop->have_posts() ) : $loop->the_post();?>
                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                     <header class="entry-header">
-                        
+
                         <!-- display app name and release notes  -->
                         <strong>App Name: </strong>
                         <?php echo esc_html( get_post_meta( get_the_ID(), 'app_name', true ) ); ?>
@@ -23,7 +23,7 @@ get_header(); ?>
                         <br />
                     </header>
 
-                    <!-- Display movie review contents -->
+                    <!-- display app release info contents -->
                     <div class="entry-content"><?php the_content(); ?></div>
                 </article>
 
