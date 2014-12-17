@@ -1,5 +1,5 @@
 <?php
-/*Template Name: App Release Post Template
+/*Template Name: App Release Template
 */
 
 get_header(); ?>
